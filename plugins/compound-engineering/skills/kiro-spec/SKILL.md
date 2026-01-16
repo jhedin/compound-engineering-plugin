@@ -24,7 +24,7 @@ Create the directory if it doesn't exist. Use kebab-case for the feature name (e
 
 Generate requirements document WITHOUT asking sequential questions first. Make reasonable assumptions based on the user's rough idea, then present for feedback.
 
-**Format:** Use EARS format from `references/ears-format.md`
+**Format:** Use EARS format from [ears-format.md](./references/ears-format.md)
 
 **Required sections:**
 1. Introduction - Feature summary
@@ -92,7 +92,7 @@ After tasks approved:
   - `.claude/specs/{feature}/requirements.md`
   - `.claude/specs/{feature}/design.md`
   - `.claude/specs/{feature}/tasks.md`
-- Suggest: "You can use `/kiro-task-exec` to begin implementing tasks one at a time, or `/kiro-spec-council` to have multiple agents review the spec."
+- Suggest: "You can use `/kiro-task-exec` to begin implementing tasks one at a time, or `/kiro-spec-review` to review the spec for completeness."
 - DO NOT begin implementing - that's a separate workflow
 
 ## Important Rules
