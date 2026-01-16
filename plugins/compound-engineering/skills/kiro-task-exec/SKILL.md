@@ -1,109 +1,120 @@
 ---
 name: kiro-task-exec
-description: This skill executes tasks from an existing spec one at a time. Use when the user wants to implement tasks from a spec, work through a task list, or continue implementation of a planned feature. Adapted from Amazon Kiro's task execution workflow.
+description: This skill executes implementation tasks from a Kiro spec one at a time with user review between each task. Use when the user wants to implement tasks from a spec, work through a task list, or continue implementation of a planned feature. Adapted from Amazon Kiro's task execution workflow.
 ---
 
-# Kiro Task Execution
+# Kiro Task Exec
 
-Execute implementation tasks from a spec, one at a time.
+Execute implementation tasks from a spec, one at a time with user review.
 
-## Prerequisites
+## Quick Start
 
-Before executing any tasks, ALWAYS read these files first:
+```
+User: "/kiro-task-exec dark-mode-toggle"
+
+1. Read requirements.md, design.md, tasks.md
+2. Find first unchecked task
+3. Ask: "The next task is X. Start?"
+4. Implement task
+5. Mark complete in tasks.md
+6. Stop and wait for user
+```
+
+## Instructions
+
+### Before Executing
+
+ALWAYS read all spec files first:
 - `.claude/specs/{feature}/requirements.md`
 - `.claude/specs/{feature}/design.md`
 - `.claude/specs/{feature}/tasks.md`
 
-Executing tasks without this context leads to inaccurate implementations that don't match the spec.
+Executing tasks without this context leads to inaccurate implementations.
 
-## Finding the Spec
+### Finding the Spec
 
 If the user doesn't specify which spec:
 1. List available specs: `ls .claude/specs/`
-2. Ask user which spec to work on
+2. Ask which spec to work on
 3. Wait for confirmation before proceeding
 
-## Execution Rules
+### Task Selection
 
-**CRITICAL: ONE TASK AT A TIME**
+**If user doesn't specify which task:**
+1. Read tasks.md
+2. Find first unchecked task (`- [ ]`)
+3. Recommend it: "The next task is [task]. Would you like me to start?"
+4. Wait for confirmation
 
-1. Only work on ONE task at a time
-2. Look at task details in the task list
-3. If a task has sub-tasks (1.1, 1.2), complete sub-tasks first
-4. Verify implementation against the referenced requirements
-5. After completing a task, STOP and let user review
-6. DO NOT proceed to the next task without user explicitly asking
+**If user specifies a task:**
+- "Start task 2" → Begin task 2
+- "Do 1.3" → Begin sub-task 1.3
+- "Next" → Find and start next unchecked task
 
-## Task Selection
+### During Execution
 
-If user doesn't specify which task:
-1. Read the tasks.md file
-2. Find the first unchecked task (`- [ ]`)
-3. Recommend it: "The next task is [task]. Would you like me to start on it?"
-4. Wait for confirmation before starting
-
-If user specifies a task:
-- "Start task 2" -> Begin task 2
-- "Do 1.3" -> Begin sub-task 1.3
-- "Next" -> Find and start the next unchecked task
-
-## Answering Task Questions
-
-Users may ask about tasks without wanting to execute them. Recognize the difference:
-
-**Information requests (don't start executing):**
-- "What's the next task?"
-- "How many tasks are left?"
-- "What does task 3 involve?"
-- "Show me the task list"
-
-**Execution requests (start working):**
-- "Start task 2"
-- "Do the next task"
-- "Begin implementation"
-- "Let's work on task 1.1"
-
-## During Task Execution
-
-1. **Reference the requirements** - Check what requirement this task implements
-2. **Follow the design** - Use the architecture and patterns from design.md
-3. **Write tests first** - If the task is TDD-focused, write tests before implementation
+1. **Reference requirements** - Check what requirement this task implements
+2. **Follow the design** - Use architecture and patterns from design.md
+3. **Write tests first** - If task is TDD-focused, tests before implementation
 4. **Keep changes focused** - Only implement what this task requires
-5. **No scope creep** - Don't fix unrelated issues or add features not in the task
+5. **No scope creep** - Don't fix unrelated issues or add unplanned features
 
-## After Task Completion
+### After Completion
 
-1. **Update tasks.md** - Mark the task as complete by changing `- [ ]` to `- [x]`
+1. **Update tasks.md** - Change `- [ ]` to `- [x]`
 2. **Summarize what was done:**
    - Files created/modified
    - Tests added
    - Key implementation decisions
-3. **Note any deviations** - If you had to deviate from the plan, explain why
-4. **STOP** - Wait for user to review
-5. **DO NOT automatically continue** - Let user decide when to proceed
+3. **Note deviations** - If you deviated from the plan, explain why
+4. **STOP** - Wait for user review
+5. **DO NOT auto-continue** - Let user decide when to proceed
 
-## Example Flow
+## Examples
 
-User invokes the skill with a spec name. The assistant:
+**Input:** "/kiro-task-exec auth-feature"
 
-1. Reads all three spec files (requirements, design, tasks)
-2. Identifies the next unchecked task
-3. Asks for confirmation to start
-4. Implements the task
-5. Updates tasks.md to mark it complete
-6. Summarizes what was done
-7. Stops and waits for user
+**Output:**
+```
+I've loaded the auth-feature spec:
+- Requirements: 5 user stories with 23 acceptance criteria
+- Design: JWT-based authentication with refresh tokens
+- Tasks: 12 tasks, 3 completed, 9 remaining
 
-The user then reviews and either:
-- Says "next" to continue to the next task
-- Asks for changes to what was implemented
-- Ends the session
+The next task is:
+- [ ] 4. Implement token refresh endpoint
+  - Implements requirement 2.3
+  - Create POST /auth/refresh endpoint
 
-## Important: Respect the Spec
+Would you like me to start on this task?
+```
 
-The spec documents represent agreed-upon requirements and design. During task execution:
+**Input:** "What's the next task?"
 
-- Do NOT change requirements without user approval
-- Do NOT deviate from the design architecture without explaining why
-- Do NOT add features not in the tasks
-- If you discover the spec needs updating, stop and discuss with the user
+**Output:** Provides information without starting execution
+
+**Input:** "Start task 4"
+
+**Output:** Implements task 4, updates tasks.md, summarizes work, stops
+
+## Guidelines
+
+1. **ONE task at a time** - Never implement multiple tasks in one go.
+
+2. **Always load context** - Read all three spec files before any task.
+
+3. **Confirm before starting** - Ask user before beginning work.
+
+4. **Stop after each task** - Present summary and wait for user.
+
+5. **Respect the spec** - The spec represents agreed-upon requirements:
+   - Do NOT change requirements without user approval
+   - Do NOT deviate from design without explaining why
+   - Do NOT add features not in the tasks
+   - If spec needs updating, stop and discuss
+
+6. **Distinguish questions from execution:**
+   - "What's the next task?" → Information only
+   - "How many tasks left?" → Information only
+   - "Start task 2" → Begin execution
+   - "Do the next task" → Begin execution

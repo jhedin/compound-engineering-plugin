@@ -1,76 +1,81 @@
 ---
 name: kiro-spec
-description: This skill implements spec-driven development with explicit approval gates. Use when starting a new feature, planning implementation, or when the user wants structured requirements/design/tasks documents. Adapted from Amazon Kiro's spec workflow.
+description: This skill creates structured specification documents for features using a three-phase workflow with explicit approval gates. Use when starting a new feature, planning implementation, or when the user wants structured requirements/design/tasks documents. Adapted from Amazon Kiro's spec-driven development workflow.
 ---
 
-# Kiro Spec Workflow
+# Kiro Spec
 
-Spec-driven development workflow adapted from Amazon Kiro.
+Create structured specification documents through a three-phase workflow with approval gates.
 
-## Overview
+## Quick Start
 
-This skill creates structured specification documents for features:
-- `requirements.md` - EARS format user stories and acceptance criteria
-- `design.md` - Architecture, components, data models, testing strategy
-- `tasks.md` - TDD-focused implementation checklist
+```
+User: "Create a spec for user authentication"
 
-## Output Location
+1. Generate requirements.md → Ask for approval
+2. Generate design.md → Ask for approval
+3. Generate tasks.md → Ask for approval
+4. Done - suggest /kiro-task-exec to implement
+```
 
-All files go to: `.claude/specs/{feature-name}/`
+Output location: `.claude/specs/{feature-name}/`
 
-Create the directory if it doesn't exist. Use kebab-case for the feature name (e.g., `dark-mode-toggle`, `user-authentication`).
+## Instructions
 
-## Phase 1: Requirements
+### Phase 1: Requirements
 
-Generate requirements document WITHOUT asking sequential questions first. Make reasonable assumptions based on the user's rough idea, then present for feedback.
+Generate requirements document based on the user's rough idea WITHOUT asking sequential questions first. Make reasonable assumptions, then present for feedback.
 
-**Format:** Use EARS format from [ears-format.md](./references/ears-format.md)
+**Create:** `.claude/specs/{feature-name}/requirements.md`
 
-**Required sections:**
-1. Introduction - Feature summary
-2. User Stories - Hierarchical numbered list with acceptance criteria
-3. Non-Functional Requirements - Performance, security, accessibility
-4. Edge Cases - Error scenarios, boundary conditions
-5. Out of Scope - What this feature does NOT include
-
-**After writing requirements.md:**
-- Present a summary to user (not the full document)
-- Ask: "Do the requirements look good? Let me know if you'd like any changes, or say 'approved' to move on to the design."
-- MUST NOT proceed until user explicitly approves ("yes", "approved", "looks good", "lgtm")
-- If user requests changes, revise and ask again
-
-## Phase 2: Design
-
-After requirements approval, create design document.
+**Format:** Use EARS (Easy Approach to Requirements Syntax) from [ears-format.md](./references/ears-format.md)
 
 **Required sections:**
-- Overview - What we're building and why
-- Architecture - High-level system design, components involved
-- Components and Interfaces - Detailed component breakdown, APIs, contracts
-- Data Models - Database schemas, data structures, state management
-- Error Handling - How errors are caught, reported, and recovered
-- Testing Strategy - Unit, integration, e2e test approach
+1. **Introduction** - Feature summary
+2. **User Stories** - Hierarchical numbered list with acceptance criteria
+3. **Non-Functional Requirements** - Performance, security, accessibility
+4. **Edge Cases** - Error scenarios, boundary conditions
+5. **Out of Scope** - What this feature does NOT include
 
-**After writing design.md:**
-- Present a summary to user
-- Ask: "Does the design look good? Let me know if you'd like changes, or say 'approved' to move on to the implementation plan."
-- MUST NOT proceed until user explicitly approves
+**After writing:**
+- Present a summary (not full document)
+- Ask: "Do the requirements look good? Let me know if you'd like changes, or say 'approved' to move to design."
+- Wait for explicit approval before proceeding
+
+### Phase 2: Design
+
+After requirements approval, create design document with research conducted during the process.
+
+**Create:** `.claude/specs/{feature-name}/design.md`
+
+**Required sections:**
+- **Overview** - What we're building and why
+- **Architecture** - High-level system design, components involved
+- **Components and Interfaces** - Detailed breakdown, APIs, contracts
+- **Data Models** - Database schemas, data structures, state management
+- **Error Handling** - How errors are caught, reported, recovered
+- **Testing Strategy** - Unit, integration, e2e test approach
+
+**After writing:**
+- Present a summary
+- Ask: "Does the design look good? Let me know if you'd like changes, or say 'approved' to move to tasks."
 - Offer to return to requirements if gaps are identified
+- Wait for explicit approval before proceeding
 
-## Phase 3: Tasks
+### Phase 3: Tasks
 
-After design approval, create implementation plan.
+After design approval, create implementation plan as a checklist of coding tasks.
 
-**Constraints:**
-- Format as numbered checkbox list (max 2 levels: 1, 1.1, 1.2, 2, 2.1)
-- Each task MUST reference specific requirements (e.g., "Implements requirement 1.2")
+**Create:** `.claude/specs/{feature-name}/tasks.md`
+
+**Format constraints:**
+- Numbered checkbox list (max 2 levels: 1, 1.1, 1.2, 2, 2.1)
+- Each task references specific requirements (e.g., "Implements requirement 1.2")
 - TDD-focused: write tests before implementation where appropriate
-- No big jumps in complexity - each task builds incrementally
-- ONLY coding tasks - no deployment, user testing, documentation, or non-coding activities
-- Each task must be actionable by a coding agent
-- Tasks should specify what files or components need to be created/modified
+- No big jumps in complexity - incremental progress
+- ONLY coding tasks - no deployment, user testing, documentation
 
-**Example task format:**
+**Task format:**
 ```markdown
 - [ ] 1. Set up authentication module structure
   - Create `app/services/auth/` directory
@@ -79,26 +84,58 @@ After design approval, create implementation plan.
   - [ ] 1.2. Write unit tests for authenticator interface
 ```
 
-**After writing tasks.md:**
-- Present task list summary to user
+**After writing:**
+- Present task list summary
 - Ask: "Do the tasks look good? Let me know if you'd like changes, or say 'approved' to complete the spec."
-- MUST NOT proceed until user explicitly approves
+- Wait for explicit approval
 
-## Completion
+### Completion
 
 After tasks approved:
 - Inform user the spec workflow is complete
-- Summarize what was created:
-  - `.claude/specs/{feature}/requirements.md`
-  - `.claude/specs/{feature}/design.md`
-  - `.claude/specs/{feature}/tasks.md`
-- Suggest: "You can use `/kiro-task-exec` to begin implementing tasks one at a time, or `/kiro-spec-review` to review the spec for completeness."
+- Summarize created files
+- Suggest: "Use `/kiro-task-exec` to begin implementing tasks one at a time, or `/kiro-spec-review` to review the spec."
 - DO NOT begin implementing - that's a separate workflow
 
-## Important Rules
+## Examples
 
-1. **Generate first, ask later** - Don't ask 20 clarifying questions before writing. Make reasonable assumptions and let the user correct.
-2. **Explicit approval gates** - MUST wait for clear approval between each phase.
+**Input:** "Create a spec for dark mode toggle"
+
+**Output sequence:**
+1. Creates `.claude/specs/dark-mode-toggle/requirements.md` with EARS-formatted user stories
+2. Presents summary: "I've created requirements for dark mode including theme persistence, system preference detection, and accessibility considerations."
+3. Waits for approval
+4. Creates `design.md` with component architecture
+5. Waits for approval
+6. Creates `tasks.md` with 8 implementation steps
+7. Waits for approval
+8. Reports completion
+
+**Input:** "The requirements look good but add offline support"
+
+**Output:** Updates requirements.md, presents new summary, asks for approval again
+
+## Guidelines
+
+1. **Generate first, ask later** - Don't ask 20 clarifying questions. Make reasonable assumptions and let the user correct.
+
+2. **Explicit approval gates** - MUST wait for clear approval ("yes", "approved", "looks good", "lgtm") between each phase.
+
 3. **One phase at a time** - Complete requirements before design, design before tasks.
-4. **Summaries, not dumps** - Present summaries after writing, not the full document contents.
+
+4. **Summaries, not dumps** - Present summaries after writing, not full document contents.
+
 5. **User controls pace** - Never auto-proceed to the next phase.
+
+6. **Coding tasks only** - Implementation plan must NOT include:
+   - User acceptance testing
+   - Deployment to production
+   - Performance metrics gathering
+   - Documentation creation
+   - Marketing activities
+
+7. **Incremental complexity** - Each task builds on previous tasks with no orphaned code.
+
+## References
+
+- [ears-format.md](./references/ears-format.md) - EARS requirements syntax guide
