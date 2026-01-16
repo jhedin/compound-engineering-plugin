@@ -93,7 +93,7 @@ Core workflow commands use `workflows:` prefix to avoid collisions with built-in
 | `/feature-video` | Record video walkthroughs and add to PR description |
 | `/generate_command` | Generate new slash commands |
 | `/heal-skill` | Fix skill documentation issues |
-| `/kiro-spec-review` | Review a Kiro spec for completeness and quality |
+| `/reviewing-kiro-specs` | Review a Kiro spec for completeness and quality |
 | `/plan_review` | Multi-agent plan review in parallel |
 | `/playwright-test` | Run browser tests on PR-affected pages |
 | `/release-docs` | Build and update documentation site |
@@ -121,9 +121,9 @@ Commands that invoke specific skills:
 | `/frontend-design` | Create distinctive, production-grade frontend interfaces |
 | `/gemini-imagegen` | Generate or edit images using Gemini API |
 | `/git-worktree` | Manage Git worktrees for parallel development |
-| `/kiro-spec` | Create structured specs with requirements/design/tasks |
-| `/kiro-task-exec` | Execute tasks from a Kiro spec one at a time |
-| `/llm-council` | Query multiple AI models and synthesize answers |
+| `/creating-kiro-specs` | Create structured specs with requirements/design/tasks |
+| `/executing-kiro-tasks` | Execute tasks from a Kiro spec one at a time |
+| `/consulting-llm-council` | Query multiple AI models and synthesize answers |
 | `/rclone` | Upload files to cloud storage (S3, R2, B2, etc.) |
 
 ## Skills
@@ -153,14 +153,14 @@ Commands that invoke specific skills:
 | `every-style-editor` | Review copy for Every's style guide compliance |
 | `file-todos` | File-based todo tracking system |
 | `git-worktree` | Manage Git worktrees for parallel development |
-| `kiro-spec` | Spec-driven development with requirements/design/tasks documents |
-| `kiro-task-exec` | Execute implementation tasks from specs one at a time |
+| `creating-kiro-specs` | Spec-driven development with requirements/design/tasks documents |
+| `executing-kiro-tasks` | Execute implementation tasks from specs one at a time |
 
 ### AI Collaboration
 
 | Skill | Description |
 |-------|-------------|
-| `llm-council` | Multi-model deliberative ensemble via OpenRouter (Karpathy-style) |
+| `consulting-llm-council` | Multi-model deliberative ensemble via OpenRouter (Karpathy-style) |
 
 ### File Transfer
 

@@ -1,5 +1,5 @@
 ---
-name: llm-council
+name: consulting-llm-council
 description: This skill queries multiple AI models via OpenRouter, has them peer-review each other's responses, then synthesizes the best answer. Use when the user wants diverse AI perspectives, needs consensus on complex questions, or wants higher-quality answers through deliberation. Inspired by Andrej Karpathy's LLM Council.
 ---
 
@@ -10,7 +10,7 @@ Query multiple AI models, have them peer-review each other, and synthesize the b
 ## Quick Start
 
 ```bash
-cd ~/.claude/plugins/marketplaces/every-marketplace/plugins/compound-engineering/skills/llm-council/scripts
+cd ~/.claude/plugins/marketplaces/every-marketplace/plugins/compound-engineering/skills/consulting-llm-council/scripts
 python council.py "What's the best database for real-time chat?"
 ```
 

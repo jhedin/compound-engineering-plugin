@@ -1,12 +1,12 @@
 ---
-name: kiro-spec
+name: creating-kiro-specs
 description: Create a structured spec with requirements, design, and tasks
 argument-hint: "[feature description, e.g., 'add user authentication']"
 ---
 
 # Kiro Spec
 
-Create a structured specification for a feature using the kiro-spec skill.
+Create a structured specification for a feature using the creating-kiro-specs skill.
 
 ## Input
 
@@ -16,7 +16,7 @@ If no feature description provided, ask the user what feature they want to spec 
 
 ## Instructions
 
-Follow the kiro-spec skill workflow exactly:
+Follow the creating-kiro-specs skill workflow exactly:
 
 1. **Phase 1: Requirements** - Generate requirements.md in EARS format, then ask for approval
 2. **Phase 2: Design** - After approval, generate design.md with architecture, then ask for approval
@@ -30,4 +30,4 @@ Key rules:
 - Present summaries, not full documents
 - Never auto-proceed to next phase
 
-After completion, suggest `/kiro-task-exec` to begin implementation.
+After completion, suggest `/executing-kiro-tasks` to begin implementation.

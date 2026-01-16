@@ -1,5 +1,5 @@
 ---
-name: kiro-spec
+name: creating-kiro-specs
 description: This skill creates structured specification documents for features using a three-phase workflow with explicit approval gates. Use when starting a new feature, planning implementation, or when the user wants structured requirements/design/tasks documents. Adapted from Amazon Kiro's spec-driven development workflow.
 ---
 
@@ -15,7 +15,7 @@ User: "Create a spec for user authentication"
 1. Generate requirements.md → Ask for approval
 2. Generate design.md → Ask for approval
 3. Generate tasks.md → Ask for approval
-4. Done - suggest /kiro-task-exec to implement
+4. Done - suggest /executing-kiro-tasks to implement
 ```
 
 Output location: `.claude/specs/{feature-name}/`
@@ -94,7 +94,7 @@ After design approval, create implementation plan as a checklist of coding tasks
 After tasks approved:
 - Inform user the spec workflow is complete
 - Summarize created files
-- Suggest: "Use `/kiro-task-exec` to begin implementing tasks one at a time, or `/kiro-spec-review` to review the spec."
+- Suggest: "Use `/executing-kiro-tasks` to begin implementing tasks one at a time, or `/reviewing-kiro-specs` to review the spec."
 - DO NOT begin implementing - that's a separate workflow
 
 ## Examples

@@ -1,12 +1,12 @@
 ---
-name: kiro-spec-review
+name: reviewing-kiro-specs
 description: Review a Kiro spec for completeness and quality
 argument-hint: "[spec folder path, e.g., .claude/specs/auth-feature]"
 ---
 
 # Kiro Spec Review
 
-Review a spec created by the kiro-spec skill for completeness and quality.
+Review a spec created by the creating-kiro-specs skill for completeness and quality.
 
 ## Input
 
@@ -58,7 +58,7 @@ Include specific recommendations for each issue.
 ## Usage
 
 ```
-/kiro-spec-review .claude/specs/user-auth
+/reviewing-kiro-specs .claude/specs/user-auth
 ```
 
 ## For Multi-Agent Review

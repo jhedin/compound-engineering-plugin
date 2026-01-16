@@ -1,5 +1,5 @@
 ---
-name: kiro-task-exec
+name: executing-kiro-tasks
 description: This skill executes implementation tasks from a Kiro spec one at a time with user review between each task. Use when the user wants to implement tasks from a spec, work through a task list, or continue implementation of a planned feature. Adapted from Amazon Kiro's task execution workflow.
 ---
 
@@ -10,7 +10,7 @@ Execute implementation tasks from a spec, one at a time with user review.
 ## Quick Start
 
 ```
-User: "/kiro-task-exec dark-mode-toggle"
+User: "/executing-kiro-tasks dark-mode-toggle"
 
 1. Read requirements.md, design.md, tasks.md
 2. Find first unchecked task
@@ -72,7 +72,7 @@ If the user doesn't specify which spec:
 
 ## Examples
 
-**Input:** "/kiro-task-exec auth-feature"
+**Input:** "/executing-kiro-tasks auth-feature"
 
 **Output:**
 ```

@@ -1,5 +1,5 @@
 ---
-name: kiro-task-exec
+name: executing-kiro-tasks
 description: Execute tasks from a Kiro spec one at a time
 argument-hint: "[spec folder path or 'next']"
 ---
@@ -18,7 +18,7 @@ If no path provided or just "next":
 
 ## Instructions
 
-Follow the kiro-task-exec skill workflow exactly:
+Follow the executing-kiro-tasks skill workflow exactly:
 
 1. **Load context** - Read requirements.md, design.md, and tasks.md from the spec folder
 2. **Find next task** - Locate first unchecked `- [ ]` item

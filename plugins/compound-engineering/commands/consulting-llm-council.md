@@ -1,5 +1,5 @@
 ---
-name: llm-council
+name: consulting-llm-council
 description: Query multiple AI models and synthesize the best answer
 argument-hint: "[your question]"
 ---
@@ -19,7 +19,7 @@ If no question provided, ask the user what they want the council to deliberate o
 Run the council script:
 
 ```bash
-cd ~/.claude/plugins/marketplaces/every-marketplace/plugins/compound-engineering/skills/llm-council/scripts
+cd ~/.claude/plugins/marketplaces/every-marketplace/plugins/compound-engineering/skills/consulting-llm-council/scripts
 python council.py --show-individual "USER_QUESTION_HERE"
 ```
 
