@@ -7,7 +7,7 @@ AI-powered development tools that get smarter with every use. Make each unit of 
 | Component | Count |
 |-----------|-------|
 | Agents | 28 |
-| Commands | 23 |
+| Commands | 37 |
 | Skills | 16 |
 | MCP Servers | 2 |
 
@@ -104,6 +104,27 @@ Core workflow commands use `workflows:` prefix to avoid collisions with built-in
 | `/resolve_todo_parallel` | Resolve todos in parallel |
 | `/triage` | Triage and prioritize issues |
 | `/xcode-test` | Build and test iOS apps on simulator |
+
+### Skill Commands
+
+Commands that invoke specific skills:
+
+| Command | Description |
+|---------|-------------|
+| `/agent-native-architecture` | Design applications where agents are first-class citizens |
+| `/andrew-kane-gem` | Write Ruby gems following Andrew Kane's patterns |
+| `/compound-docs` | Capture solved problems as categorized documentation |
+| `/dhh-rails-style` | Write Ruby/Rails code in DHH's 37signals style |
+| `/dspy-ruby` | Build type-safe LLM applications with DSPy.rb |
+| `/every-style` | Review and edit copy for Every's style guide |
+| `/file-todos` | Manage file-based todo tracking |
+| `/frontend-design` | Create distinctive, production-grade frontend interfaces |
+| `/gemini-imagegen` | Generate or edit images using Gemini API |
+| `/git-worktree` | Manage Git worktrees for parallel development |
+| `/kiro-spec` | Create structured specs with requirements/design/tasks |
+| `/kiro-task-exec` | Execute tasks from a Kiro spec one at a time |
+| `/llm-council` | Query multiple AI models and synthesize answers |
+| `/rclone` | Upload files to cloud storage (S3, R2, B2, etc.) |
 
 ## Skills
 
