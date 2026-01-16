@@ -6,9 +6,9 @@ AI-powered development tools that get smarter with every use. Make each unit of 
 
 | Component | Count |
 |-----------|-------|
-| Agents | 27 |
-| Commands | 20 |
-| Skills | 13 |
+| Agents | 28 |
+| Commands | 23 |
+| Skills | 16 |
 | MCP Servers | 2 |
 
 ## Agents
@@ -34,7 +34,7 @@ Agents are organized into categories for easier discovery.
 | `security-sentinel` | Security audits and vulnerability assessments |
 | `julik-frontend-races-reviewer` | Review JavaScript/Stimulus code for race conditions |
 
-### Research (4)
+### Research (5)
 
 | Agent | Description |
 |-------|-------------|
@@ -42,6 +42,7 @@ Agents are organized into categories for easier discovery.
 | `framework-docs-researcher` | Research framework documentation and best practices |
 | `git-history-analyzer` | Analyze git history and code evolution |
 | `repo-research-analyst` | Research repository structure and conventions |
+| `requirements-analyst` | Analyze and clarify requirements for features |
 
 ### Design (3)
 
@@ -84,21 +85,25 @@ Core workflow commands use `workflows:` prefix to avoid collisions with built-in
 
 | Command | Description |
 |---------|-------------|
-| `/deepen-plan` | Enhance plans with parallel research agents for each section |
+| `/agent-native-audit` | Run comprehensive agent-native architecture review |
 | `/changelog` | Create engaging changelogs for recent merges |
 | `/create-agent-skill` | Create or edit Claude Code skills |
+| `/deepen-plan` | Enhance plans with parallel research agents for each section |
+| `/deploy-docs` | Validate and prepare documentation for deployment |
+| `/feature-video` | Record video walkthroughs and add to PR description |
 | `/generate_command` | Generate new slash commands |
 | `/heal-skill` | Fix skill documentation issues |
+| `/kiro-spec-review` | Review a Kiro spec for completeness and quality |
 | `/plan_review` | Multi-agent plan review in parallel |
+| `/playwright-test` | Run browser tests on PR-affected pages |
+| `/release-docs` | Build and update documentation site |
 | `/report-bug` | Report a bug in the plugin |
 | `/reproduce-bug` | Reproduce bugs using logs and console |
 | `/resolve_parallel` | Resolve TODO comments in parallel |
 | `/resolve_pr_parallel` | Resolve PR comments in parallel |
 | `/resolve_todo_parallel` | Resolve todos in parallel |
 | `/triage` | Triage and prioritize issues |
-| `/playwright-test` | Run browser tests on PR-affected pages |
 | `/xcode-test` | Build and test iOS apps on simulator |
-| `/feature-video` | Record video walkthroughs and add to PR description |
 
 ## Skills
 
@@ -127,6 +132,14 @@ Core workflow commands use `workflows:` prefix to avoid collisions with built-in
 | `every-style-editor` | Review copy for Every's style guide compliance |
 | `file-todos` | File-based todo tracking system |
 | `git-worktree` | Manage Git worktrees for parallel development |
+| `kiro-spec` | Spec-driven development with requirements/design/tasks documents |
+| `kiro-task-exec` | Execute implementation tasks from specs one at a time |
+
+### AI Collaboration
+
+| Skill | Description |
+|-------|-------------|
+| `llm-council` | Multi-model deliberative ensemble via OpenRouter (Karpathy-style) |
 
 ### File Transfer
 
